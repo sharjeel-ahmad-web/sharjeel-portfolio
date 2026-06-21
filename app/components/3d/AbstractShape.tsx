@@ -5,8 +5,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useTexture, Html, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
-// ⚠️ VERCEL ERROR ALERT: Ensure folder 'lib' and file 'imageTheme' match EXACT case in your files!
-import { IMAGE_CARD_BG } from '@/app/lib/imageTheme'; 
+import { IMAGE_CARD_BG } from '@/app/lib/imageTheme';
 
 // Professional Loading Spinner while 3D is rendering
 function Loader() {
