@@ -9,7 +9,7 @@ export default function AIChatWidget() {
     const { isOpen, setIsOpen, messages, setMessages } = useChat();
     const [inputValue, setInputValue] = useState('');
     const [isLoadingBackend, setIsLoadingBackend] = useState(false);
-    const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+    const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sharjeel-ai-backend.vercel.app';
 
     // Naye messages aane par auto-scroll karne ke liye reference
     const messagesEndRef = useRef<HTMLDivElement>(null);
