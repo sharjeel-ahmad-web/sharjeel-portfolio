@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #07111f;
+  --color-foreground: #eef7ff;
+  --color-card: #0b1528;
+  --color-primary: #18c7b4;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #07111f;
+  --surface: #0b1528;
+  --surface-2: #0f1d37;
+  --text: #eef7ff;
+  --muted: #94a3b8;
+  --border: rgba(148, 163, 184, 0.12);
+  --primary: #18c7b4;
+  --primary-soft: rgba(24, 199, 180, 0.12);
+  --shadow: rgba(1, 7, 19, 0.48);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="light"] {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --text: #0f172a;
+  --muted: #5b6478;
+  --border: rgba(15, 23, 42, 0.08);
+  --primary: #0f766e;
+  --primary-soft: rgba(15, 118, 110, 0.08);
+  --shadow: rgba(15, 23, 42, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(24, 199, 180, 0.08), transparent 14%),
+    linear-gradient(180deg, var(--bg), var(--surface-2));
+  color: var(--text);
+  font-family: Inter, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(24, 199, 180, 0.18);
+  color: var(--text);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary), #0ea5e9);
+}
+
+@layer utilities {
+  .glass-panel {
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 18px 50px var(--shadow);
+  }
+
+  .section-shell {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at top, rgba(24, 199, 180, 0.04), transparent 18%),
+      radial-gradient(circle at bottom, rgba(37, 99, 235, 0.03), transparent 14%);
+    pointer-events: none;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 78%, transparent);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.72rem 0.9rem;
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+  }
+
+  .glass-card {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 90%, transparent), color-mix(in srgb, var(--surface-2) 78%, transparent));
+    border: 1px solid var(--border);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 22px 48px var(--shadow);
+  }
+
+  .nav-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.62rem 0.95rem;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+  }
+
+  .nav-pill:hover {
+    color: var(--text);
+    background: color-mix(in srgb, var(--text) 6%, transparent);
+  }
+
+  .nav-pill.active {
+    color: var(--text);
+    background: linear-gradient(90deg, var(--primary-soft), rgba(37, 99, 235, 0.08));
+    box-shadow: inset 0 0 0 1px var(--border);
+  }
+
+  .fade-up {
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
 }

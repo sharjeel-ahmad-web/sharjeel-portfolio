@@ -1,0 +1,15 @@
+Sharjeel Ahmad
+Full Stack & AI Integration Specialist
+
+Experience
+- Full Stack & AI Integration Specialist | Independent Consultant (2022 - Present)
+- Frontend Web Developer (UI & WordPress) | Creative Agency (2020 - 2022)
+
+Skills
+- React.js, Next.js, TypeScript, Tailwind CSS
+- WordPress, Elementor, Figma to Code
+- AI integrations, MCP, REST APIs, performance optimization
+
+Contact
+Email: sharjeel.graphics.web@gmail.com
+LinkedIn: https://www.linkedin.com/in/sharjeel-ahmad-web-developer-2646361b7/
